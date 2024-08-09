@@ -32,7 +32,7 @@ export default function RootLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="(index)"
         options={{
           title: "Home",
           tabBarIcon: makeIcon("home", "home-active"),
