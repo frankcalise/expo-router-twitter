@@ -22,7 +22,7 @@ export default function RootLayout() {
       </Head>
 
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <Stack />
+        <Slot />
       </GestureHandlerRootView>
     </>
   );

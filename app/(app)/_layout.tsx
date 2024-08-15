@@ -1,4 +1,4 @@
-import { Redirect, Tabs } from "expo-router";
+import { Redirect, Tabs, useSegments } from "expo-router";
 import { Icon, IconName } from "@/components/icon";
 
 function makeIcon(icon: IconName, activeIcon: IconName) {
@@ -16,6 +16,8 @@ function makeIcon(icon: IconName, activeIcon: IconName) {
 
 export default function RootLayout() {
   const isAuthenticated = true;
+  const segments = useSegments();
+  console.log({ segments });
 
   if (!isAuthenticated) {
     return <Redirect href="/log-in" />;
@@ -34,6 +36,9 @@ export default function RootLayout() {
       <Tabs.Screen
         name="(index)"
         options={{
+          // if this is href: "/(app)/(index)/index",
+          // tapping on the home tab shows [profile] with a profile var of value `index` for some reason
+          // href: "/(app)/(index)",
           title: "Home",
           tabBarIcon: makeIcon("home", "home-active"),
         }}
@@ -42,12 +47,14 @@ export default function RootLayout() {
         name="(search)"
         options={{
           title: "Search",
+          href: "/(app)/(search)/search",
           tabBarIcon: makeIcon("explore", "explore-active"),
         }}
       />
       <Tabs.Screen
         name="(profile)"
         options={{
+          href: "/(app)/(profile)/profile",
           title: "Profile",
           tabBarIcon: makeIcon("profile", "profile-active"),
         }}
